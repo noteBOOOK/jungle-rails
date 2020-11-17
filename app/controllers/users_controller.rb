@@ -10,8 +10,7 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect_to '/', notice: 'Account created successfully!'
     else
-      flash[:error] = 'An error occured!'
-      render 'new'
+      render 'new', notice: 'An error occured!'
     end
   end
 

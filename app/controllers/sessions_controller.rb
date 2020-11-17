@@ -1,3 +1,5 @@
+
+
 class SessionsController < ApplicationController
 
   def new
@@ -5,9 +7,8 @@ class SessionsController < ApplicationController
   end
 
   def create
-    user = User.find_by_email(params[:email])
     # If user exists AND password is correct
-    if user && user.authenticate(params[:password])
+    if user = User.authenticate_with_credentials(params[:email], params[:password])
       # Save the user id inside the browswer cookie
       session[:user_id] = user.id
       redirect_to '/'
