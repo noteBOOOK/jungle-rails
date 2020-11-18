@@ -16,3 +16,7 @@
 <% end %>
 <div class="row">
 <div class="col-sm-6 col-sm-offset-1">
+
+<% if flash[:notice] %>
+    <div id="notice"><%= flash[:notice] %></div>
+<% end %>

@@ -15,6 +15,7 @@ class SessionsController < ApplicationController
     else
       # If failed login, redirect back to login form
       redirect_to '/login'
+      flash[:notice] = 'An error occured!'
     end
   end
 

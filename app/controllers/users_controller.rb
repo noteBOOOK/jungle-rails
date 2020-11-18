@@ -8,9 +8,11 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       session[:user_id] = @user.id
-      redirect_to '/', notice: 'Account created successfully!'
+      flash[:notice] = 'Account created successfully!'
+      redirect_to '/'
     else
-      render 'new', notice: 'An error occured!'
+      flash[:notice] = @user.errors.full_messages
+      render 'new'
     end
   end
 
